@@ -2,7 +2,7 @@
 
 provider "azurerm" {
   features {}
-  environment                = "usgovernment"
+  #environment                = "usgovernment"
   skip_provider_registration = true
 }
 
@@ -12,7 +12,7 @@ data "azurerm_subscription" "current" {}
 
 resource "azurerm_resource_group" "example" {
   name     = "ralphael2"
-  location = "USGov Virginia"
+  location = "eastus"
 }
 
 # Create the hub virtual network
@@ -239,7 +239,7 @@ resource "azurerm_windows_virtual_machine" "ralphael2-spoke1-vm" {
 ### PEERING #####
 resource "azurerm_virtual_network_peering" "spoke1_to_tier2" {
   name                      = "spoke1-to-tier2"
-  resource_group_name       = azurerm_resource_group.example.name 
+  resource_group_name       = azurerm_resource_group.example.name
   virtual_network_name      = azurerm_virtual_network.spoke1.name
   remote_virtual_network_id = azurerm_virtual_network.tier2.id
 
@@ -255,7 +255,7 @@ resource "azurerm_virtual_network_peering" "spoke2_to_tier2" {
   remote_virtual_network_id = azurerm_virtual_network.tier2.id
 
   allow_virtual_network_access = true
-  allow_forwarded_traffic      = true 
+  allow_forwarded_traffic      = true
   allow_gateway_transit        = false
 }
 
@@ -267,7 +267,7 @@ resource "azurerm_virtual_network_peering" "tier2_to_spoke1" {
 
   allow_virtual_network_access = true
   allow_forwarded_traffic      = true
-  allow_gateway_transit        = false 
+  allow_gateway_transit        = false
 }
 
 resource "azurerm_virtual_network_peering" "tier2_to_spoke2" {

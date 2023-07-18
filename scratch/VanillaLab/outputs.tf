@@ -3,7 +3,7 @@ output "resource_group_name" {
 }
 
 output "resource_group_location" {
-  value = azurerm_resource_group.example.location 
+  value = azurerm_resource_group.example.location
 }
 
 output "resource_group_id" {
@@ -67,7 +67,7 @@ output "storage_account_id" {
 }
 
 output "private_endpoint_name" {
-  value = azurerm_private_endpoint.example.name 
+  value = azurerm_private_endpoint.example.name
 }
 
 output "private_endpoint_id" {
